@@ -10,12 +10,10 @@ class FBMClient:
     
     def __init__(self, app_id, filename, expiry):
         
-        # Read in private key from store
         f = open(filename, 'r')
         self.private_key = f.read()
         f.close()
 
-        # Build JWT payload
         self.payload = {
             'application_id': app_id,
             'iat': int(time.time()),
@@ -26,7 +24,7 @@ class FBMClient:
 
     def send_message (self, fb_sender, fb_recipient, msg):
 
-        print("Sending FBM message...")
+        print("Sending FBM message -> from: %s to: %s msg: %s" % (fb_sender, fb_recipient, msg))
         
         data_body = {
             "from": {
