@@ -1,3 +1,4 @@
+.nexmo-app
 .DS_Store
 private.key
 .env
