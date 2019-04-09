@@ -1,8 +1,10 @@
+import sys
 from flask import Flask, request, jsonify
 from pprint import pprint
 from ProductMatcher.ProductMatcher import ProductMatcher
 
-NEXMO_APP_ID = "YOUR_NEXMO_APP_ID"
+NEXMO_APP_ID = sys.argv[1]
+print("Nexmo App ID: %s" % NEXMO_APP_ID)
 
 pm = ProductMatcher(NEXMO_APP_ID)
 app = Flask(__name__)
@@ -14,7 +16,7 @@ def inbound_message():
     user = data['from']['id']
     fb_sender = data['to']['id']
     in_msg = data['message']['content']['text']
-    pm.product_match(fb_sender, user, in_msg)
+    pm.product_matcher(fb_sender, user, in_msg)
     return ("200")
 
 @app.route('/status', methods=['POST'])
