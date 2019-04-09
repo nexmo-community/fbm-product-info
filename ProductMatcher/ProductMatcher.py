@@ -22,7 +22,7 @@ class ProductMatcher:
             product = 'none' 
         else:
             msg = msg.split(':')[1]
-            for k in self.cats_dict.items():
+            for k in self.cats_dict.keys():
                 if k in msg:
                     product = k
                     break
