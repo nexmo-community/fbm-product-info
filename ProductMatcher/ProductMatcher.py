@@ -10,23 +10,23 @@ class ProductMatcher:
         'bling': 'More info on cat bling here https://bit.ly/jkl'
     }
     
-    def __init__(nexmo_app_id):
+    def __init__(self, nexmo_app_id):
         filename = "private.key"
         jwt_expiry = 1*60*60 # JWT expires after one hour (default is 15 minutes)
         self.fbm = FBMClient(nexmo_app_id, filename, jwt_expiry)
         return
 
-    def product_matcher (fb_sender, user, msg):
+    def product_matcher(self, fb_sender, user, msg):
         msg = msg.lower().strip()
         if "info:" not in msg:
             product = 'none' 
         else:
             msg = msg.split(':')[1]
-            for k in cats_dict.items():
+            for k in self.cats_dict.items():
                 if k in msg:
                     product = k
                     break
-        fbm.send_message(fb_sender, user, cats_dict[product])
+        self.fbm.send_message(fb_sender, user, self.cats_dict[product])
         return product    
 
 
