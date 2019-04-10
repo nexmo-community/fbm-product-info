@@ -14,12 +14,9 @@ class FBMClient:
         self.private_key = f.read()
         f.close()
 
-        self.payload = {
-            'application_id': app_id,
-            'iat': int(time.time()),
-            'jti': str(uuid4()),
-            'exp': int(time.time()) + expiry,
-        }
+        self.app_id = app_id
+        self.expiry = expiry
+        
         return
 
     def send_message (self, fb_sender, fb_recipient, msg):
@@ -43,7 +40,15 @@ class FBMClient:
             }
         }
 
-        data_body = json.dumps(data_body)        
+        data_body = json.dumps(data_body)
+
+        self.payload = {
+            'application_id': self.app_id,
+            'iat': int(time.time()),
+            'jti': str(uuid4()),
+            'exp': int(time.time()) + self.expiry,
+        }
+
         gen_jwt  = jwt.encode(self.payload, self.private_key, algorithm='RS256')
         auth = b'Bearer '+gen_jwt
         headers = {'Authorization': auth, 'Content-Type': 'application/json'}
