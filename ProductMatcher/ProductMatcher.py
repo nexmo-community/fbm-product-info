@@ -21,6 +21,7 @@ class ProductMatcher:
     def product_matcher(self, fb_sender, user, msg):
         product = 'other'
         msg = msg.lower().strip()
+        print("Msg: %s" % msg)
         if self.auto_mode:
             if "auto: off" in msg:
                 self.auto_mode = False
