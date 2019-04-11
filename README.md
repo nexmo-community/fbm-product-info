@@ -5,16 +5,17 @@ via FaceBook Messenger.
 
 ## Status
 
-Refactored. Now needs testing.
+Working.
 
 ## Example
 
-The user sends Acme a message 'Hi' an automated reply is sent saying:
-"Type `info: service` to obtain info". This could also provide a list
-of services.
-
-If the user types `info: tank cleaning` or `info: my tanks need
-cleaning`, they will be sent correct product info.
+1. The user sends the Facebook Page a message 'Hi'.
+2. An automated reply is sent back listing products/services or other
+   generic message.
+3. Use sends back a message containing a keyword.
+4. Based on the keyword a tailored response is automatically returned.
+5. User can switch off auto mode by sending a message `auto: off`.
+6. User can switch on auto mode by sending a message `auto: on`.
 
 ## Uses
 
@@ -23,7 +24,7 @@ cleaning`, they will be sent correct product info.
 
 ## FBM message send
 
-Contains a custom tiny client to send FBM messages until officially
-supported.
+Contains a tiny Python client to send FBM messages until official
+support is available.
 
 ---
