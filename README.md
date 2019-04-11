@@ -21,6 +21,7 @@ Working.
 
 * Python/Flask.
 * PyJWT
+* [Messages API](https://developer.nexmo.com/messages/overview)
 
 ## FBM message send
 
